@@ -1,4 +1,4 @@
-import TransactionType from '../../models/enums/TransactionType';
+import { TransactionType } from '../../models/Types';
 
 export default interface CreateTransactionDto {
   title: string;

@@ -1,5 +1,6 @@
 import { uuid } from 'uuidv4';
-import TransactionType from './enums/TransactionType';
+
+import { TransactionType } from './Types';
 
 class Transaction {
   id: string;
