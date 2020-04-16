@@ -1,4 +1,5 @@
 import Transaction from '../models/Transaction';
+import CreateTransactionDto from './dtos/CreateTransactionDto';
 
 interface Balance {
   income: number;
@@ -13,16 +14,20 @@ class TransactionsRepository {
     this.transactions = [];
   }
 
-  public all(): Transaction[] {
-    // TODO
-  }
+  // public all(): Transaction[] {
+  //   // TODO
+  // }
 
-  public getBalance(): Balance {
-    // TODO
-  }
+  // public getBalance(): Balance {
+  //   // TODO
+  // }
 
-  public create(): Transaction {
-    // TODO
+  public create({ title, type, value }: CreateTransactionDto): Transaction {
+    const newTransaction = new Transaction({ title, value, type });
+
+    this.transactions.push(newTransaction);
+
+    return newTransaction;
   }
 }
 
