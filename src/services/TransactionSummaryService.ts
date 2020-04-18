@@ -1,16 +1,18 @@
 import TransactionsRepository from '../repositories/TransactionsRepository';
+import TransactionSummaryDto from './dtos/TransactionSummaryDto';
+import TransactionBalanceDto from './dtos/TransactionBalanceDto';
 
-class ListTransactionsService {
+class TransactionSummaryService {
   private transactionsRepository: TransactionsRepository;
 
   constructor(transactionsRepository: TransactionsRepository) {
     this.transactionsRepository = transactionsRepository;
   }
 
-  public execute() {
+  public execute(): TransactionSummaryDto {
     const transactions = this.transactionsRepository.all();
 
-    let balance = {
+    let balance: TransactionBalanceDto = {
       income: 0,
       outcome: 0,
       total: 0,
@@ -32,4 +34,4 @@ class ListTransactionsService {
   }
 }
 
-export default ListTransactionsService;
+export default TransactionSummaryService;

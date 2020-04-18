@@ -3,7 +3,7 @@ import { Router } from 'express';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import CreateTransactionService from '../services/CreateTransactionService';
 import CreateTransactionDto from '../services/dtos/CreateTransactionDto';
-import ListTransactionsService from '../services/ListTransactionsService';
+import TransactionSummaryService from '../services/TransactionSummaryService';
 
 const transactionRouter = Router();
 
@@ -11,13 +11,13 @@ const transactionsRepository = new TransactionsRepository();
 
 transactionRouter.get('/', (request, response) => {
   try {
-    const resumeTransactionsService = new ListTransactionsService(
+    const transactionSummaryService = new TransactionSummaryService(
       transactionsRepository,
     );
 
-    const resume = resumeTransactionsService.execute();
+    const summary = transactionSummaryService.execute();
 
-    return response.json(resume);
+    return response.json(summary);
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
