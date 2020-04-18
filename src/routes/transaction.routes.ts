@@ -29,6 +29,7 @@ transactionRouter.post('/', (request, response) => {
 
     const createTransactionService = new CreateTransactionService(
       transactionsRepository,
+      new TransactionSummaryService(transactionsRepository),
     );
 
     const transaction = createTransactionService.execute({
